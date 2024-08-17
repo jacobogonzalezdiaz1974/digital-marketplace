@@ -1,0 +1,67 @@
+{
+  "name": "module-from-string",
+  "version": "3.3.1",
+  "description": "Load module from string using require or import.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs",
+    "types": "./dist/index.d.ts"
+  },
+  "scripts": {
+    "clean": "rm -rf .cache dist",
+    "dts": "tsc -p tsconfig.dts.json",
+    "bundle": "rollup -c",
+    "build": "npm run clean && npm run dts && npm run bundle",
+    "lint": "ts-standardx",
+    "lint:fix": "ts-standardx --fix",
+    "jest:cjs": "jest -c __tests__/cjs/jest.config.js",
+    "jest:esm": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c __tests__/esm/jest.config.js",
+    "jest": "npm run jest:cjs && npm run jest:esm",
+    "test": "npm run lint && npm run build && npm run jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exuanbo/module-from-string.git"
+  },
+  "keywords": [
+    "load",
+    "module",
+    "string",
+    "require",
+    "require-from-string",
+    "import",
+    "vm",
+    "esbuild"
+  ],
+  "author": "exuanbo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/exuanbo/module-from-string/issues"
+  },
+  "homepage": "https://github.com/exuanbo/module-from-string#readme",
+  "engines": {
+    "node": ">=12.20.0"
+  },
+  "dependencies": {
+    "esbuild": "^0.23.0",
+    "nanoid": "^3.3.7"
+  },
+  "devDependencies": {
+    "@types/jest": "28.1.8",
+    "@types/node": "22.0.0",
+    "@types/normalize-path": "3.0.2",
+    "cross-env": "7.0.3",
+    "jest": "28.1.3",
+    "normalize-path": "3.0.0",
+    "rollup": "2.79.1",
+    "rollup-plugin-dts": "4.2.3",
+    "rollup-plugin-esbuild-transform": "1.5.0",
+    "ts-jest": "28.0.8",
+    "ts-standardx": "0.8.4",
+    "typescript": "4.4.4"
+  },
+  "packageManager": "npm@8.19.4+sha512.dc700d97c8bd0ca9d403cf4fe0a12054d376f048d27830a6bc4a9bcce02ec42143cdd059ce3525f7dce09c6a4e52e9af5b996f268d8729c8ebb1cfad7f2bf51f"
+}
